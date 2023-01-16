@@ -75,7 +75,7 @@ def main(options, help, funs, *k):
 
 
 # test
-# input python3 Main.py -g in cmd
+# input 'python3 Main.py -g all' in cmd
 # --> {'dump': False, 'go': 'all', 'help': False, 'seed': 937162211}
 if __name__ == '__main__':
     list_of_argument = sys.argv
