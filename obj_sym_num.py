@@ -62,7 +62,7 @@ class NUM:
         self.m2 = 0 # standard deviation
         
         self.lo = math.inf # lowest value, initially set as MAX
-        self.hi = -math.inf # highest seen, initially set as MIN
+        self.hi = -math.inf # highest value, initially set as MIN
 
     # line 59 function NUM.add(i,x)
     # add `n`, update lo,hi and stuff needed for standard deviation
