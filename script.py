@@ -13,7 +13,7 @@
 import re
 import sys
 
-the = {}
+the =  {}
 help = '''
 script.lua : an example script with help text and a test suite
 (c)2022, Tim Menzies <timm@ieee.org>, BSD-2
@@ -74,7 +74,7 @@ class SYM:
     # line 48 functon SYM.div(i,x,  fun, e)
     # fun() here should be an anonymous funciton
     #return the entropy
-    def div(self, x):
+    def div(self):
         e = 0
         for key in self.has:
             p = self.has[key] / self.n
@@ -140,14 +140,15 @@ def rint(lo, hi):
 
 # n; a float "x" lo<=x < x
 def rand(lo, hi):
+    global Seed
     lo = lo or 0
     hi = hi or 1
     Seed = (16807 * Seed) % 2147483647
     return lo + (hi-lo) * Seed / 2147483647
 
 # num. return `n` rounded to `nPlaces`
-def rnd(n, nPlaces):
-    mult = 10^(nPlaces or 3)
+def rnd(n, nPlaces=3):
+    mult = 10**nPlaces
     return math.floor(n * mult + 0.5) / mult
 
 
@@ -265,22 +266,27 @@ def cli(t, list):
                 t[slot] = coerce(v)
     return t
 
+import sys
 
 def main(options, help, funs, *k):
     saved = {}
     fails = 0
-    for k, v in cli(settings(help)).items():
+    for k, v in cli(settings(help), sys.argv).items():
         options[k] = v
         saved[k] = v
-    if options[help]:
+    if options['help']:
         print(help)
+    #print("funs:")
+    #print(funs)
+
     else:
+        #print(funs)
         for what, fun in funs.items():
             if options['go'] == 'all' or what == options['go']:
                 for k, v in saved.items():
                     options[k] = v
                 # Seed = options[seed]
-                if funs[what]() == False:
+                if fun() == False:
                     fails += 1
                     print("❌ fail:", what)
                 else:
@@ -288,48 +294,55 @@ def main(options, help, funs, *k):
 
 
 
-
+the=settings(help)
 ## Examples
 
 egs = {}
 def eg(key, str, fun):
+    global help
     egs[key] = fun
-    help + f'  -g  {key}\t{str}\n'
+    help = help + f'  -g  {key}\t{str}\n'
 
 
+
+if __name__=='__main__':
+    
 # eg("crash","show crashing behavior", function()
 #   return the.some.missing.nested.field end)
+    def thefun():
+        global the
+        return oo(the)
+    eg("the","show settings", thefun)
 
-eg("the","show settings", oo(the))
+    def randfun():
+        global Seed
+        num1  =NUM()
+        num2 = NUM()
+        Seed = the['seed']
+        for i in range(1,10^3+1):
+            num1.add(rand(0, 1))
+        Seed = the['seed']
+        for i in range(1,10^3+1):
+            num2.add(rand(0, 1))
+        m1 = rnd(num1.mid(), 10)
+        m2 = rnd(num2.mid(), 10)
+        return m1 == m2 and -5 == rnd(m1, 1)
+    eg("rand","generate, reset, regenerate same", randfun)
 
-def tmpfun():
-    global Seed
-    num1  =NUM()
-    num2 = NUM()
-    Seed = the['seed']
-    for i in range(1,10^3+1):
-        num1.add(rand(0, 1))
-    Seed = the['seed']
-    for i in range(1,10^3+1):
-        num2.add(rand(0, 1))
-    m1 = rnd(num1.mid(), 10)
-    m2 = rnd(num2.mid(), 10)
-    return m1 == m2 and -5 == rnd(m1, 1)
-eg("rand","generate, reset, regenerate same", tmpfun())
+    def symfun():
+        sym = SYM()
+        for x in ["a","a","a","a","b","b","c"]:
+            sym.add(x)
+        return "a" == sym.mid() and 1.379 == rnd(sym.div())
+    eg("sym","check syms", symfun)
 
-def tmpfun():
-    sym = SYM()
-    for x in ["a","a","a","a","b","b","c"]:
-        sym.add(x)
-    return "a" == sym.mid() and 1.379 == rnd(sym.div())
-eg("sym","check syms", tmpfun())
+    def numfun():
+        num = NUM()
+        for x in [1,1,1,1,2,2,3]:
+            num.add(x)
+            return 11/7 == num.mid() and 0.787 == rnd(num.div())
 
-def tmpfun():
-    num = NUM()
-    for x in [1,1,1,1,2,2,3]:
-        num.add(x)
-        return 11/7 == num.mid() and 0.787 == rnd(num.div())
-
-eg("num", "check nums", tmpfun())
-
-main(the, help, egs)
+    eg("num", "check nums", numfun)
+    #print("haha")
+    #print(egs)
+    main(the, help, egs)
