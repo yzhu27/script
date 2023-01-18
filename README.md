@@ -1,2 +1,14 @@
-# script
-test
+# README
+## This is the README file of HW1-script (CSC 591, 2023)
+There are some classes and their basic functions defined:
+
+Classes:
+* NUM
+* SYM
+
+Some functions:
+* Random generators (some are false using seed)
+* List
+* String
+
+And some test examples
