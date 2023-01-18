@@ -1,12 +1,11 @@
 import re
 
 def fmt(sControl , *elements): # emulate printf
-    print(sControl%(elements)) 
-
+    return (sControl%(elements)) 
 #test
 ##a=1
 ##b=2
-##fmt("%s and %s" , a , b) --> "1 and 2"
+##print(fmt("%s and %s" , a , b)) #--> "1 and 2"
 
 
 def o(t , *isKeys): #--> s; convert `t` to a string. sort named keys.
@@ -14,7 +13,7 @@ def o(t , *isKeys): #--> s; convert `t` to a string. sort named keys.
         return str(t)
     
     def fun(k , v):
-        if not re.findall('[^_]'):
+        if not re.findall('[^_]' , k):
             return fmt(":%s %s",o(k),o(v))
     
     return '{' + ' '.join([str(len(t) > 0) , str(not isKeys) , str(map(t , o)) , str(sort(kap(t , fun)))]) + '}'
