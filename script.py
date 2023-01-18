@@ -326,7 +326,7 @@ if __name__=='__main__':
             num2.add(rand(0, 1))
         m1 = rnd(num1.mid(), 10)
         m2 = rnd(num2.mid(), 10)
-        return m1 == m2 and -5 == rnd(m1, 1)
+        return m1 == m2 and .5 == rnd(m1, 1)
     eg("rand","generate, reset, regenerate same", randfun)
 
     def symfun():
@@ -340,7 +340,7 @@ if __name__=='__main__':
         num = NUM()
         for x in [1,1,1,1,2,2,3]:
             num.add(x)
-            return 11/7 == num.mid() and 0.787 == rnd(num.div())
+        return 11/7 == num.mid() and 0.787 == rnd(num.div())
 
     eg("num", "check nums", numfun)
     #print("haha")
