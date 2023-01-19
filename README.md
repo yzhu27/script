@@ -7,7 +7,7 @@ Classes:
 * SYM
 
 Some functions:
-* Random generators (some are false using seed)
+* Random generators
 * List
 * String
 
