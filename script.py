@@ -12,6 +12,7 @@
 
 import re
 import sys
+import math
 
 the =  {}
 help = '''
@@ -30,7 +31,7 @@ ACTIONS:
 '''
 
 
-import math
+
 
 #line 32
 #Summarize a stream of symbols.
@@ -128,7 +129,6 @@ class NUM:
 
 
 # Misc support functions
-import math
 
 ## Numerics 
 
@@ -187,7 +187,7 @@ def keys(t:list):
 
 ## Strings
 
-import re
+
 
 def fmt(sControl , *elements): # emulate printf
     return (sControl%(elements)) 
@@ -266,7 +266,7 @@ def cli(t, list):
                 t[slot] = coerce(v)
     return t
 
-import sys
+
 
 def main(options, help, funs, *k):
     saved = {}
