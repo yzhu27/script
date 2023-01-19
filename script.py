@@ -205,7 +205,7 @@ def o(t , *isKeys): #--> s; convert `t` to a string. sort named keys.
         if not re.findall('[^_]' , k):
             return fmt(":%s %s",o(k),o(v))
     
-    return '{' + ' '.join([str(len(t) > 0) , str(not isKeys) , str(map(t , o)) , str(sort(kap(t , fun)))]) + '}'
+    return ' '.join([str(len(t) > 0) and str(not isKeys) and str(map(t , o)) or str(sort(kap(t , fun)))])
 
 def oo(t):
     print(o(t))
@@ -276,16 +276,13 @@ def main(options, help, funs, *k):
         saved[k] = v
     if options['help']:
         print(help)
-    #print("funs:")
-    #print(funs)
+    
 
     else:
-        #print(funs)
         for what, fun in funs.items():
             if options['go'] == 'all' or what == options['go']:
                 for k, v in saved.items():
                     options[k] = v
-                # Seed = options[seed]
                 if fun() == False:
                     fails += 1
                     print("❌ fail:", what)
@@ -294,7 +291,6 @@ def main(options, help, funs, *k):
 
 
 
-the=settings(help)
 ## Examples
 
 egs = {}
@@ -343,6 +339,6 @@ if __name__=='__main__':
         return 11/7 == num.mid() and 0.787 == rnd(num.div())
 
     eg("num", "check nums", numfun)
-    #print("haha")
-    #print(egs)
+
+
     main(the, help, egs)
