@@ -21,3 +21,9 @@ And some test examples
 * Result:
 
 ![result img](./result.png)
+
+
+## Contributors:
+* Jiayuan Huang [jhuang52]
+* Mengzhe Wang [mwang39]
+* Yuheng Zhu [yzhu63]
