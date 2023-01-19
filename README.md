@@ -12,3 +12,12 @@ Some functions:
 * String
 
 And some test examples
+
+## Result:
+* [Expected result](https://github.com/timm/tested/blob/main/etc/out/script.out):
+
+![result img](./ex_result.png)
+
+* Result:
+
+![result img](./result.png)
