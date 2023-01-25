@@ -16,11 +16,12 @@ And some test examples
 ## Result:
 * [Expected result](https://github.com/timm/tested/blob/main/etc/out/script.out):
 
-![result img](./ex_result.png)
+![result img](./etc/images/ex_result.png)
 
 * Result:
+* [result](./etc/out/script.out):
 
-![result img](./result.png)
+![result img](./etc/images/result.png)
 
 
 ## Contributors:
