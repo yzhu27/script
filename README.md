@@ -19,7 +19,7 @@ And some test examples
 ![result img](./etc/images/ex_result.png)
 
 * Result:
-* [result](./etc/out/script.out):
+* [result](./etc/out/script.out)
 
 ![result img](./etc/images/result.png)
 
