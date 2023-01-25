@@ -1,4 +1,8 @@
-# README
+# script
+![Build test](https://img.shields.io/github/actions/workflow/status/yzhu27/script/test.yml)
+![MIT license](https://img.shields.io/github/license/yzhu27/script)
+![GitHub top language](https://img.shields.io/github/languages/top/yzhu27/script)
+![GitHub contributors](https://img.shields.io/github/contributors/yzhu27/script)
 ## This is the README file of HW1-script (CSC 591, 2023)
 There are some classes and their basic functions defined:
 
