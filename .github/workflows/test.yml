@@ -12,5 +12,5 @@ jobs:
         python-version: 3.8
     - name: test
       run: |
-        cd ./src; (python3 ./script.py -g all)
+        cd ./src; (python3 -u ./script.py -g all > ../etc/out/script.out)
     - run: echo "🍏 This job's status is ${{ job.status }}."
